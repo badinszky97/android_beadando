@@ -11,11 +11,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.List;
-
 
 public class ElozoTankolasok extends Fragment {
-    private WordViewModel mWordViewModel;
+    private TankolasViewModel mTankolasViewModel;
 
     public ElozoTankolasok() {
         // Required empty public constructor
@@ -39,12 +37,12 @@ public class ElozoTankolasok extends Fragment {
 
 
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
-        final WordListAdapter adapter = new WordListAdapter(new WordListAdapter.WordDiff());
+        final TankolasListAdapter adapter = new TankolasListAdapter(new TankolasListAdapter.WordDiff());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(mainActivity.getBaseContext()));
-        mWordViewModel = new ViewModelProvider(this).get(WordViewModel.class);
+        mTankolasViewModel = new ViewModelProvider(this).get(TankolasViewModel.class);
 
-        mWordViewModel.getAllWords().observe(getViewLifecycleOwner(), words -> {
+        mTankolasViewModel.getAllWords().observe(getViewLifecycleOwner(), words -> {
             // Update the cached copy of the words in the adapter.
             adapter.submitList(words);
         });
