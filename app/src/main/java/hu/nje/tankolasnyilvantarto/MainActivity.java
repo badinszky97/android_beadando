@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
             loadFragment(new Kezdolap(), "Fooldal");
         } else if (id == R.id.action_elozo_tankolasok) {
             //showMessage("Beállítások");
-            //loadFragment(new Settings_fragment(), "ElozoTankolasok");
+            loadFragment(new ElozoTankolasok(), "ElozoTankolasok");
         }else if (id == R.id.action_fogyasztasi_adatok) {
             //showMessage("Beállítások");
             //loadFragment(new Categories_fragment(), "FogyasztasiAdatok");
