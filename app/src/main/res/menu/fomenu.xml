@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <item android:id="@+id/action_fooldal"
+        android:title="Főoldal"
+        app:showAsAction="never" />
+
+    <item android:id="@+id/action_elozo_tankolasok"
+        android:title="Előző tankolások"
+        app:showAsAction="never" />
+
+    <item android:id="@+id/action_fogyasztasi_adatok"
+        android:title="Fogyasztási adatok"
+        app:showAsAction="never" />
+</menu>
