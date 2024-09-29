@@ -10,11 +10,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.List;
 
 
 public class ElozoTankolasok extends Fragment {
     private TankolasViewModel mTankolasViewModel;
-
+    FloatingActionButton hozzaadGomb;
     public ElozoTankolasok() {
         // Required empty public constructor
     }
@@ -32,9 +37,9 @@ public class ElozoTankolasok extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         MainActivity mainActivity = (MainActivity)getActivity();
-
         View view = inflater.inflate(R.layout.fragment_elozo_tankolasok, container, false);
 
+        hozzaadGomb=view.findViewById(R.id.uj_tankolasgomb);
 
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
         final TankolasListAdapter adapter = new TankolasListAdapter(new TankolasListAdapter.WordDiff());
@@ -46,7 +51,15 @@ public class ElozoTankolasok extends Fragment {
             // Update the cached copy of the words in the adapter.
             adapter.submitList(words);
         });
-
+        hozzaadGomb.setOnClickListener( v -> {
+            List<Tankolas> asd = adapter.getCurrentList();
+            ShowMeassage("asd");
+        });
         return view;
+    }
+
+    private void ShowMeassage(String message)
+    {
+        Toast.makeText(getActivity().getBaseContext(), message, Toast.LENGTH_SHORT).show();
     }
 }
