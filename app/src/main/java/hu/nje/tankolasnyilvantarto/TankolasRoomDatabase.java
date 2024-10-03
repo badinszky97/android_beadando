@@ -47,9 +47,9 @@ public abstract class TankolasRoomDatabase extends RoomDatabase {
                 TankolasDao dao = INSTANCE.wordDao();
                 dao.deleteAll();
 
-                Tankolas tankolas = new Tankolas("Hello");
+                Tankolas tankolas = new Tankolas("Hello",1,2);
                 dao.insert(tankolas);
-                tankolas = new Tankolas("World");
+                tankolas = new Tankolas("World",3,4);
                 dao.insert(tankolas);
             });
         }
