@@ -10,6 +10,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class UjTankolas extends Fragment {
 
@@ -49,10 +54,46 @@ public class UjTankolas extends Fragment {
 
         hozzaadGomb.setOnClickListener( v -> {
 
-            Tankolas ujElem = new Tankolas("megjegyzesa", 101,201);
-            mTankolasViewModel.insert(ujElem);
-            mainactivity.UjElozoTankolasokFragment();
+
+            if(isValidDate(ujDatum.getText() + " " + ujIdopont.getText()))
+            {
+                String megjegyzes = String.valueOf(ujMegjegyzes.getText());
+                String mennyiseg = String.valueOf(ujMennyiseg.getText());
+                int datum = 1;
+                SimpleDateFormat konvertaltDatum = convertStringToDate(ujDatum.getText() + " " + ujIdopont.getText());
+                Tankolas ujElem = new Tankolas("megjegyzesa", 101,201);
+
+                mTankolasViewModel.insert(ujElem);
+                mainactivity.UjElozoTankolasokFragment();
+            }
+            else {
+                Toast.makeText(getContext(),"Rossz dátum",Toast.LENGTH_SHORT).show();
+            }
+
         });
         return view;
     }
+
+    public static boolean isValidDate(String beDatun) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd HH:mm");
+        dateFormat.setLenient(false);
+        try {
+            dateFormat.parse(beDatun.trim());
+        } catch (ParseException pe) {
+            return false;
+        }
+        return true;
+    }
+
+    private SimpleDateFormat convertStringToDate(String beDatum){
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd HH:mm");
+        dateFormat.setLenient(false);
+        try {
+            dateFormat.parse(beDatum.trim());
+        } catch (ParseException pe) {
+            return new SimpleDateFormat();
+        }
+        return dateFormat;
+    }
+
 }
