@@ -3,6 +3,7 @@ package hu.nje.tankolasnyilvantarto;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,10 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class UjTankolas extends Fragment {
+
+    private TankolasViewModel mTankolasViewModel;
+
+
     Button hozzaadGomb;
     EditText ujMennyiseg;
     EditText ujDatum;
@@ -39,10 +44,14 @@ public class UjTankolas extends Fragment {
         ujMegjegyzes = view.findViewById(R.id.ujTankolasFrgMeghegyzes);
 
         hozzaadGomb = view.findViewById(R.id.ujTankolasFrgHozzaad);
+
+        mTankolasViewModel = new ViewModelProvider(this).get(TankolasViewModel.class);
+
         hozzaadGomb.setOnClickListener( v -> {
 
-            Tankolas ujElem = new Tankolas("megjegyzes", 100,200);
-
+            Tankolas ujElem = new Tankolas("megjegyzesa", 101,201);
+            mTankolasViewModel.insert(ujElem);
+            mainactivity.UjElozoTankolasokFragment();
         });
         return view;
     }

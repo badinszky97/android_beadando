@@ -56,9 +56,9 @@ public class MainActivity extends AppCompatActivity {
         loadFragment(new UjTankolas(), "ujtankolas");
     }
 
-    public void UjTankolasMentese(Tankolas uj)
+    public void UjElozoTankolasokFragment()
     {
-        
+        loadFragment(new ElozoTankolasok(), "elozo");
     }
 
     private void loadFragment(Fragment fragment, String tag) {
