@@ -52,6 +52,15 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    public void UjTankolasFragment(){
+        loadFragment(new UjTankolas(), "ujtankolas");
+    }
+
+    public void UjTankolasMentese(Tankolas uj)
+    {
+        
+    }
+
     private void loadFragment(Fragment fragment, String tag) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();

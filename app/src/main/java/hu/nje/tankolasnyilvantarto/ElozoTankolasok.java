@@ -60,6 +60,7 @@ public class ElozoTankolasok extends Fragment {
 
     private void ShowMeassage(String message)
     {
-        Toast.makeText(getActivity().getBaseContext(), message, Toast.LENGTH_SHORT).show();
+        MainActivity mainActivity = (MainActivity)getActivity();
+        mainActivity.UjTankolasFragment();
     }
 }
