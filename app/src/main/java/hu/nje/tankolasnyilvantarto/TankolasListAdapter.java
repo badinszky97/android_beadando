@@ -20,7 +20,7 @@ public class TankolasListAdapter extends ListAdapter<Tankolas, TankolasViewHolde
     @Override
     public void onBindViewHolder(TankolasViewHolder holder, int position) {
         Tankolas current = getItem(position);
-        holder.bind(current.getWord());
+        holder.bind(current);
     }
 
     static class WordDiff extends DiffUtil.ItemCallback<Tankolas> {

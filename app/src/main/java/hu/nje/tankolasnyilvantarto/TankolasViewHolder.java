@@ -8,15 +8,22 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 class TankolasViewHolder extends RecyclerView.ViewHolder {
-    private final TextView wordItemView;
+    private final TextView mennyiseg;
+    private final TextView idopont;
+    private final TextView megjegyzes;
 
     private TankolasViewHolder(View itemView) {
         super(itemView);
-        wordItemView = itemView.findViewById(R.id.textView);
+        mennyiseg = itemView.findViewById(R.id.labelMennyiseg);
+        idopont = itemView.findViewById(R.id.labelDatum);
+        megjegyzes = itemView.findViewById(R.id.labelMegjegyzes);
     }
 
-    public void bind(String text) {
-        wordItemView.setText(text);
+    public void bind(Tankolas ujElem) {
+
+        megjegyzes.setText(ujElem.getWord());
+        idopont.setText("idopont");
+        mennyiseg.setText(String.valueOf(ujElem.iMennyiseg));
     }
 
     static TankolasViewHolder create(ViewGroup parent) {
