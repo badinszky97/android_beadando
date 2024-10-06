@@ -10,9 +10,10 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProvider;
 
 public class MainActivity extends AppCompatActivity {
-
+    public TankolasViewModel mTankolasViewModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         setTitle("Tank app");
         // **************************
+        mTankolasViewModel = new ViewModelProvider(this).get(TankolasViewModel.class);
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

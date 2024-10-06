@@ -3,6 +3,7 @@ package hu.nje.tankolasnyilvantarto;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -10,8 +11,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.List;
+
 public class FogyasztasiAdatok extends Fragment {
-    FogyasztasiAdat[] myListData;
+    FogyasztasiAdat[] fogyasztasok;
     public FogyasztasiAdatok() {
         // Required empty public constructor
     }
@@ -28,19 +31,32 @@ public class FogyasztasiAdatok extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_fogyasztasi_adatok, container, false);
+        MainActivity mainActivity = (MainActivity)getActivity();
 
-        myListData = new FogyasztasiAdat[] {
-                new FogyasztasiAdat("1",1.0f),
-                new FogyasztasiAdat("2",2.0f),
-                new FogyasztasiAdat("3",3.0f),
-                new FogyasztasiAdat("4",4.0f),
-                new FogyasztasiAdat("5",5.0f),
+        List<Tankolas> tankolasok = mainActivity.mTankolasViewModel.getAllWords().getValue();
 
 
-        };
+
+        if(tankolasok.size() > 2)
+        {
+            fogyasztasok = new FogyasztasiAdat[tankolasok.size()-1];
+            for(int i = 1;i<tankolasok.size();i++)
+            {
+                int km_kulonbseg = tankolasok.get(i).iKm - tankolasok.get(i-1).iKm;
+                int menny = tankolasok.get(i).iMennyiseg;
+                float fogyasztas = tankolasok.get(i).iMennyiseg  * 100 / (float)km_kulonbseg;
+                fogyasztasok[i-1] = new FogyasztasiAdat("datum", fogyasztas);
+            }
+        }
+
+
+        /*fogyasztasok = new FogyasztasiAdat[]{
+                new FogyasztasiAdat("a",1f)
+        };*/
+
 
         RecyclerView recyclerView = view.findViewById(R.id.fogyasztasiAdatokLista);
-        FogyasztasiAdatokListAdatper adapter = new FogyasztasiAdatokListAdatper(myListData);
+        FogyasztasiAdatokListAdatper adapter = new FogyasztasiAdatokListAdatper(fogyasztasok);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
