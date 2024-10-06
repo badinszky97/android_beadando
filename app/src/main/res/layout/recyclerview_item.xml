@@ -37,6 +37,15 @@
         app:layout_constraintTop_toBottomOf="@+id/label1" />
 
     <TextView
+        android:id="@+id/label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Km:"
+        app:layout_constraintStart_toStartOf="@+id/label2"
+        app:layout_constraintTop_toBottomOf="@+id/label2" />
+
+    <TextView
         android:id="@+id/labelDatum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -45,13 +54,21 @@
         app:layout_constraintTop_toTopOf="@+id/label2" />
 
     <TextView
+        android:id="@+id/lableKm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/labelDatum"
+        app:layout_constraintTop_toTopOf="@+id/label" />
+
+    <TextView
         android:id="@+id/label3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Megjegyzés:"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/label2" />
+        app:layout_constraintTop_toBottomOf="@+id/label" />
 
     <TextView
         android:id="@+id/labelMegjegyzes"

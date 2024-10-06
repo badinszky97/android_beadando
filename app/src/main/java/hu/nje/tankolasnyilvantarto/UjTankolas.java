@@ -30,6 +30,7 @@ public class UjTankolas extends Fragment {
     EditText ujOra;
     EditText ujPerc;
     EditText ujMegjegyzes;
+    EditText ujKm;
     public UjTankolas() {
         // Required empty public constructor
     }
@@ -56,6 +57,8 @@ public class UjTankolas extends Fragment {
         ujOra = view.findViewById(R.id.editOra);
         ujPerc = view.findViewById(R.id.editPerc);
 
+        ujKm = view.findViewById(R.id.ujTankolasFrgKm);
+
         hozzaadGomb = view.findViewById(R.id.ujTankolasFrgHozzaad);
 
         mTankolasViewModel = new ViewModelProvider(this).get(TankolasViewModel.class);
@@ -66,7 +69,7 @@ public class UjTankolas extends Fragment {
             if(DatumValos() != "")
             {
                 java.sql.Timestamp timestamp = java.sql.Timestamp.valueOf(DatumValos());
-                Tankolas ujtank = new Tankolas(ujMegjegyzes.getText().toString(), Integer.parseInt(ujMennyiseg.getText().toString()), timestamp.getTime() );
+                Tankolas ujtank = new Tankolas(ujMegjegyzes.getText().toString(), Integer.parseInt(ujMennyiseg.getText().toString()), timestamp.getTime(), Integer.parseInt(ujKm.getText().toString()) );
                 mTankolasViewModel.insert(ujtank);
                 mainactivity.UjElozoTankolasokFragment();
             }

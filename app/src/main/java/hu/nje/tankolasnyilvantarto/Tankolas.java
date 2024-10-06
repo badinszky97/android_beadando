@@ -24,11 +24,15 @@ public class Tankolas {
     @ColumnInfo(name = "datum")
     public long lDatum;
 
-    public Tankolas(@NonNull String word, int mennyiseg, long datum)
+    @ColumnInfo(name = "km")
+    public int iKm;
+
+    public Tankolas(@NonNull String word, int mennyiseg, long datum, int km)
     {
         this.mWord = word;
         this.iMennyiseg = mennyiseg;
         this.lDatum = datum;
+        this.iKm = km;
     }
     public Tankolas(@NonNull String word)
     {
