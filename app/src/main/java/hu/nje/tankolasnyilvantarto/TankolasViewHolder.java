@@ -24,7 +24,7 @@ class TankolasViewHolder extends RecyclerView.ViewHolder {
     public void bind(Tankolas ujElem) {
 
         megjegyzes.setText(ujElem.getWord());
-        Timestamp ujidopont = new Timestamp(ujElem.iDatum);
+        Timestamp ujidopont = new Timestamp(ujElem.lDatum);
         idopont.setText(ujidopont.toString());
         mennyiseg.setText(String.valueOf(ujElem.iMennyiseg));
     }

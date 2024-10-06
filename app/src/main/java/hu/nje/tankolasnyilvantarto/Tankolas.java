@@ -5,8 +5,6 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import java.util.Date;
-
 @Entity(tableName = "word_table")
 public class Tankolas {
 
@@ -24,13 +22,13 @@ public class Tankolas {
     public int iMennyiseg;
 
     @ColumnInfo(name = "datum")
-    public long iDatum;
+    public long lDatum;
 
     public Tankolas(@NonNull String word, int mennyiseg, long datum)
     {
         this.mWord = word;
         this.iMennyiseg = mennyiseg;
-        this.iDatum = datum;
+        this.lDatum = datum;
     }
     public Tankolas(@NonNull String word)
     {
