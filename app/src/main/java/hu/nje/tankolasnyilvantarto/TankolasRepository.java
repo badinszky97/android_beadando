@@ -9,7 +9,7 @@ import java.util.List;
 class TankolasRepository {
 
     private TankolasDao mTankolasDao;
-    private LiveData<List<Tankolas>> mAllWords;
+    private LiveData<List<Tankolas>> mindenTankolas;
 
     // Note that in order to unit test the WordRepository, you have to remove the Application
     // dependency. This adds complexity and much more code, and this sample is not about testing.
@@ -18,13 +18,13 @@ class TankolasRepository {
     TankolasRepository(Application application) {
         TankolasRoomDatabase db = TankolasRoomDatabase.getDatabase(application);
         mTankolasDao = db.wordDao();
-        mAllWords = mTankolasDao.getAlphabetizedWords();
+        mindenTankolas = mTankolasDao.getMindenTankolas();
     }
 
     // Room executes all queries on a separate thread.
     // Observed LiveData will notify the observer when the data has changed.
     LiveData<List<Tankolas>> getAllWords() {
-        return mAllWords;
+        return mindenTankolas;
     }
 
     // You must call this on a non-UI thread or your app will throw an exception. Room ensures

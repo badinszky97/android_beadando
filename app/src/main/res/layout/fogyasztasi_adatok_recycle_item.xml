@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/Layout1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10sp"
+    android:layout_marginEnd="10sp"
+    android:background="#4CAF50"
+    android:padding="5sp">
+
+    <TextView
+        android:id="@+id/label11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fogyasztás:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/labelFogyasztasiAdatFogyasztas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/label11"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/label22"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Időpont:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/label11" />
+
+    <TextView
+        android:id="@+id/labelFogyasztasiAdatDatum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/labelFogyasztasiAdatFogyasztas"
+        app:layout_constraintTop_toTopOf="@+id/label22" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

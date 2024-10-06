@@ -18,7 +18,6 @@ import java.util.List;
 
 
 public class ElozoTankolasok extends Fragment {
-    private TankolasViewModel mTankolasViewModel;
     FloatingActionButton hozzaadGomb;
     public ElozoTankolasok() {
         // Required empty public constructor
@@ -45,9 +44,9 @@ public class ElozoTankolasok extends Fragment {
         final TankolasListAdapter adapter = new TankolasListAdapter(new TankolasListAdapter.WordDiff());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(mainActivity.getBaseContext()));
-        mTankolasViewModel = new ViewModelProvider(this).get(TankolasViewModel.class);
+        mainActivity.mTankolasViewModel = new ViewModelProvider(this).get(TankolasViewModel.class);
 
-        mTankolasViewModel.getAllWords().observe(getViewLifecycleOwner(), words -> {
+        mainActivity.mTankolasViewModel.getAllWords().observe(getViewLifecycleOwner(), words -> {
             // Update the cached copy of the words in the adapter.
             adapter.submitList(words);
         });

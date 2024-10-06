@@ -4,19 +4,16 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProvider;
 
 public class MainActivity extends AppCompatActivity {
-
+    public TankolasViewModel mTankolasViewModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +25,12 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         setTitle("Tank app");
         // **************************
+        mTankolasViewModel = new ViewModelProvider(this).get(TankolasViewModel.class);
+
+        mTankolasViewModel.getAllWords().observe(this, words -> {
+            // Update the cached copy of the words in the adapter.
+            //adapter.submitList(words);
+        });
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -46,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
             loadFragment(new ElozoTankolasok(), "ElozoTankolasok");
         }else if (id == R.id.action_fogyasztasi_adatok) {
             //showMessage("Beállítások");
-            //loadFragment(new Categories_fragment(), "FogyasztasiAdatok");
+            loadFragment(new FogyasztasiAdatok(), "FogyasztasiAdatok");
         }
 
         return true;

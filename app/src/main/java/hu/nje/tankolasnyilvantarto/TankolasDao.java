@@ -19,6 +19,6 @@ public interface TankolasDao {
     @Query("DELETE FROM word_table")
     void deleteAll();
 
-    @Query("SELECT * FROM word_table ORDER BY word ASC")
-    LiveData<List<Tankolas>> getAlphabetizedWords();
+    @Query("SELECT * FROM word_table ORDER BY datum")
+    LiveData<List<Tankolas>> getMindenTankolas();
 }
