@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.sql.Date;
 import java.util.List;
 
 public class FogyasztasiAdatok extends Fragment {
@@ -45,7 +46,9 @@ public class FogyasztasiAdatok extends Fragment {
                 int km_kulonbseg = tankolasok.get(i).iKm - tankolasok.get(i-1).iKm;
                 int menny = tankolasok.get(i).iMennyiseg;
                 float fogyasztas = tankolasok.get(i).iMennyiseg  * 100 / (float)km_kulonbseg;
-                fogyasztasok[i-1] = new FogyasztasiAdat("datum", fogyasztas);
+
+                Date date = new Date(tankolasok.get(i).lDatum);
+                fogyasztasok[i-1] = new FogyasztasiAdat(date.toString(), fogyasztas);
             }
         }
 

@@ -29,7 +29,7 @@ public class FogyasztasiAdatokListAdatper extends RecyclerView.Adapter<Fogyaszta
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         final FogyasztasiAdat myListData = listdata[position];
-        holder.fogyasztas.setText(String.valueOf(listdata[position].getFogyasztas()));
+        holder.fogyasztas.setText(String.valueOf(listdata[position].getFogyasztas()) + " l/100km");
         holder.datum.setText(String.valueOf(listdata[position].getDatum()));
     }
 
