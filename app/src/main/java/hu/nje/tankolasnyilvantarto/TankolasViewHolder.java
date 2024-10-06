@@ -7,6 +7,8 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.sql.Timestamp;
+
 class TankolasViewHolder extends RecyclerView.ViewHolder {
     private final TextView mennyiseg;
     private final TextView idopont;
@@ -22,7 +24,8 @@ class TankolasViewHolder extends RecyclerView.ViewHolder {
     public void bind(Tankolas ujElem) {
 
         megjegyzes.setText(ujElem.getWord());
-        idopont.setText("idopont");
+        Timestamp ujidopont = new Timestamp(ujElem.iDatum);
+        idopont.setText(ujidopont.toString());
         mennyiseg.setText(String.valueOf(ujElem.iMennyiseg));
     }
 

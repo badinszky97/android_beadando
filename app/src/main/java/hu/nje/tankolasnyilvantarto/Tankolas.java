@@ -24,9 +24,9 @@ public class Tankolas {
     public int iMennyiseg;
 
     @ColumnInfo(name = "datum")
-    public int iDatum;
+    public long iDatum;
 
-    public Tankolas(@NonNull String word, int mennyiseg, int datum)
+    public Tankolas(@NonNull String word, int mennyiseg, long datum)
     {
         this.mWord = word;
         this.iMennyiseg = mennyiseg;

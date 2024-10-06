@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -23,8 +24,11 @@ public class UjTankolas extends Fragment {
 
     Button hozzaadGomb;
     EditText ujMennyiseg;
-    EditText ujDatum;
-    EditText ujIdopont;
+    EditText ujEv;
+    EditText ujHonap;
+    EditText ujNap;
+    EditText ujOra;
+    EditText ujPerc;
     EditText ujMegjegyzes;
     public UjTankolas() {
         // Required empty public constructor
@@ -44,9 +48,13 @@ public class UjTankolas extends Fragment {
         View view = inflater.inflate(R.layout.fragment_uj_tankolas, container, false);
         MainActivity mainactivity = (MainActivity)getActivity();
         ujMennyiseg = view.findViewById(R.id.ujTankolasFrgMennyiseg);
-        ujDatum = view.findViewById(R.id.ujTankolasFrgDatum);
-        ujIdopont = view.findViewById(R.id.ujTankolasFrgIdopont);
+
         ujMegjegyzes = view.findViewById(R.id.ujTankolasFrgMeghegyzes);
+        ujEv = view.findViewById(R.id.editEv);
+        ujHonap = view.findViewById(R.id.editHonap);
+        ujNap = view.findViewById(R.id.editNap);
+        ujOra = view.findViewById(R.id.editOra);
+        ujPerc = view.findViewById(R.id.editPerc);
 
         hozzaadGomb = view.findViewById(R.id.ujTankolasFrgHozzaad);
 
@@ -55,15 +63,11 @@ public class UjTankolas extends Fragment {
         hozzaadGomb.setOnClickListener( v -> {
 
 
-            if(isValidDate(ujDatum.getText() + " " + ujIdopont.getText()))
+            if(DatumValos() != "")
             {
-                String megjegyzes = String.valueOf(ujMegjegyzes.getText());
-                String mennyiseg = String.valueOf(ujMennyiseg.getText());
-                int datum = 1;
-                SimpleDateFormat konvertaltDatum = convertStringToDate(ujDatum.getText() + " " + ujIdopont.getText());
-                Tankolas ujElem = new Tankolas("megjegyzesa", 101,201);
-
-                mTankolasViewModel.insert(ujElem);
+                java.sql.Timestamp timestamp = java.sql.Timestamp.valueOf(DatumValos());
+                Tankolas ujtank = new Tankolas(ujMegjegyzes.getText().toString(), Integer.parseInt(ujMennyiseg.getText().toString()), timestamp.getTime() );
+                mTankolasViewModel.insert(ujtank);
                 mainactivity.UjElozoTankolasokFragment();
             }
             else {
@@ -74,26 +78,22 @@ public class UjTankolas extends Fragment {
         return view;
     }
 
-    public static boolean isValidDate(String beDatun) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd HH:mm");
-        dateFormat.setLenient(false);
+    public String DatumValos() {
         try {
-            dateFormat.parse(beDatun.trim());
-        } catch (ParseException pe) {
-            return false;
-        }
-        return true;
-    }
+            int ev = Integer.parseInt(ujEv.getText().toString());
+            int honap = Integer.parseInt(ujHonap.getText().toString());
+            int nap = Integer.parseInt(ujNap.getText().toString());
 
-    private SimpleDateFormat convertStringToDate(String beDatum){
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd HH:mm");
-        dateFormat.setLenient(false);
-        try {
-            dateFormat.parse(beDatum.trim());
-        } catch (ParseException pe) {
-            return new SimpleDateFormat();
+            int ora = Integer.parseInt(ujOra.getText().toString());
+            int perc = Integer.parseInt(ujPerc.getText().toString());
+
+            String idopontString = String.valueOf(ev) + "-" + String.valueOf(honap) + "-" + String.valueOf(nap) + " " + String.valueOf(ora) + ":" + String.valueOf(perc) + ":00";
+            java.sql.Timestamp timestamp = java.sql.Timestamp.valueOf(idopontString);
+            return idopontString;
         }
-        return dateFormat;
+        catch(Exception e) {
+            return "";
+        }
     }
 
 }
