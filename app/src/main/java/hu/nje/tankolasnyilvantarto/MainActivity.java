@@ -26,6 +26,11 @@ public class MainActivity extends AppCompatActivity {
         setTitle("Tank app");
         // **************************
         mTankolasViewModel = new ViewModelProvider(this).get(TankolasViewModel.class);
+
+        mTankolasViewModel.getAllWords().observe(this, words -> {
+            // Update the cached copy of the words in the adapter.
+            //adapter.submitList(words);
+        });
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
