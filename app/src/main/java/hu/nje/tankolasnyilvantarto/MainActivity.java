@@ -21,9 +21,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         // **************************
         // toolbar beállítása
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.mainToolbar);
         setSupportActionBar(toolbar);
-        setTitle("Tank app");
+        setTitle("Tankolás nyílvántartó");
         // **************************
         mTankolasViewModel = new ViewModelProvider(this).get(TankolasViewModel.class);
 
