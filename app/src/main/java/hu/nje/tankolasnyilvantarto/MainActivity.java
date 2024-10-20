@@ -3,6 +3,7 @@ package hu.nje.tankolasnyilvantarto;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
         // **************************
-        // toolbar beállítása
+       // toolbar beállítása
         Toolbar toolbar = findViewById(R.id.mainToolbar);
         setSupportActionBar(toolbar);
         setTitle("Tankolás nyílvántartó");
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
             // Update the cached copy of the words in the adapter.
             //adapter.submitList(words);
         });
+
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
