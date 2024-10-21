@@ -30,6 +30,16 @@ public class Kezdolap extends Fragment {
         View view = inflater.inflate(R.layout.fragment_kezdolap, container, false);
         MainActivity mainactivity = (MainActivity)getActivity();
         Button exitButton = view.findViewById(R.id.exitButton);
+        Button tankolokButton=view.findViewById(R.id.tankolokButton);
+
+        tankolokButton.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        mainactivity.UjTankolasFragment();
+                    }
+                }
+        );
 
         exitButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,6 +48,7 @@ public class Kezdolap extends Fragment {
                 System.exit(0);
 
             }
+
         });
 
         return view;

@@ -35,11 +35,11 @@
         app:layout_constraintVertical_bias="0.224" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/tankolokButton"
         android:layout_width="350dp"
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
-        android:text="Button"
+        android:text="Új tankolás"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
@@ -50,8 +50,8 @@
         android:layout_height="50dp"
         android:layout_marginTop="8dp"
         android:text="Bezárás"
-        app:layout_constraintEnd_toEndOf="@+id/button"
-        app:layout_constraintStart_toStartOf="@+id/button"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintEnd_toEndOf="@+id/tankolokButton"
+        app:layout_constraintStart_toStartOf="@+id/tankolokButton"
+        app:layout_constraintTop_toBottomOf="@+id/tankolokButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
