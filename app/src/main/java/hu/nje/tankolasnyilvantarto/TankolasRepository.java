@@ -34,4 +34,6 @@ class TankolasRepository {
             mTankolasDao.insert(tankolas);
         });
     }
+
+
 }

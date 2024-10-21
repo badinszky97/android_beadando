@@ -15,6 +15,8 @@ import android.widget.Toast;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class UjTankolas extends Fragment {
@@ -57,6 +59,17 @@ public class UjTankolas extends Fragment {
         ujOra = view.findViewById(R.id.editOra);
         ujPerc = view.findViewById(R.id.editPerc);
 
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd/HH/mm");
+        Date date = new Date();
+        String maiDatum=formatter.format(date);
+        String[] arrOfStr = maiDatum.split("/");
+        ujEv.setText(arrOfStr[0]);
+        ujHonap.setText(arrOfStr[1]);
+        ujNap.setText(arrOfStr[2]);
+        ujOra.setText(arrOfStr[3]);
+        ujPerc.setText(arrOfStr[4]);
+        ujMegjegyzes.setText(" ");
+
         ujKm = view.findViewById(R.id.ujTankolasFrgKm);
 
         hozzaadGomb = view.findViewById(R.id.ujTankolasFrgHozzaad);
@@ -83,6 +96,7 @@ public class UjTankolas extends Fragment {
 
     public String DatumValos() {
         try {
+
             int ev = Integer.parseInt(ujEv.getText().toString());
             int honap = Integer.parseInt(ujHonap.getText().toString());
             int nap = Integer.parseInt(ujNap.getText().toString());

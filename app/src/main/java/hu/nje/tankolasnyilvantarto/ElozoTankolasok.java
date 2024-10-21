@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.RoomDatabase;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +20,7 @@ import java.util.List;
 
 public class ElozoTankolasok extends Fragment {
     FloatingActionButton hozzaadGomb;
+    FloatingActionButton torolgomb;
     public ElozoTankolasok() {
         // Required empty public constructor
     }
@@ -39,6 +41,7 @@ public class ElozoTankolasok extends Fragment {
         View view = inflater.inflate(R.layout.fragment_elozo_tankolasok, container, false);
 
         hozzaadGomb=view.findViewById(R.id.uj_tankolasgomb);
+        torolgomb= view.findViewById(R.id.deleteButton);
 
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
         final TankolasListAdapter adapter = new TankolasListAdapter(new TankolasListAdapter.WordDiff());
@@ -54,6 +57,7 @@ public class ElozoTankolasok extends Fragment {
             List<Tankolas> asd = adapter.getCurrentList();
             ShowMeassage("asd");
         });
+
         return view;
     }
 
