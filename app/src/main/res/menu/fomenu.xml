@@ -5,7 +5,8 @@
 
     <item android:id="@+id/action_fooldal"
         android:title="Főoldal"
-        app:showAsAction="never" />
+        android:icon="@drawable/fuelstation"
+        app:showAsAction="always" />
 
     <item android:id="@+id/action_elozo_tankolasok"
         android:title="Előző tankolások"
