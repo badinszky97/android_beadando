@@ -68,7 +68,7 @@ public class UjTankolas extends Fragment {
         ujNap.setText(arrOfStr[2]);
         ujOra.setText(arrOfStr[3]);
         ujPerc.setText(arrOfStr[4]);
-        ujMegjegyzes.setText(" ");
+        ujMegjegyzes.setText("-");
 
         ujKm = view.findViewById(R.id.ujTankolasFrgKm);
 
